@@ -6,6 +6,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * 21.3.5同步控制块创建临界区
+ */
 public class CriticalSection {
     public static void main(String[] args) {
         PairManager pairManager1 = new PairManager1();
@@ -24,12 +27,12 @@ public class CriticalSection {
         executorService.execute(pairChecker1);
         executorService.execute(pairChecker2);
         try {
-            TimeUnit.MILLISECONDS.sleep(500);
+            TimeUnit.MILLISECONDS.sleep(5);
         } catch (InterruptedException e) {
             System.out.println("Sleep interrupted");
         }
-        System.out.println("pairManipulator1:" + pairManager1);
-        System.out.println("pairManipulator2:" + pairManager2);
+        System.out.println("pairManipulator1:" + pairManipulator1);
+        System.out.println("pairManipulator2:" + pairManipulator2);
         System.exit(0);
     }
 }
