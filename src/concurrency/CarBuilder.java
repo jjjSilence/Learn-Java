@@ -7,6 +7,24 @@ import java.util.concurrent.*;
 
 import static net.mindview.util.Print.print;
 
+public class CarBuilder {
+    public static void main(String[] args) throws Exception {
+        CarQueue chassisQueue = new CarQueue(),
+                finishingQueue = new CarQueue();
+        ExecutorService exec = Executors.newCachedThreadPool();
+        RobotPool robotPool = new RobotPool();
+        exec.execute(new EngineRobot(robotPool));
+        exec.execute(new DriveTrainRobot(robotPool));
+        exec.execute(new WheelRobot(robotPool));
+        exec.execute(new Assembler(chassisQueue, finishingQueue, robotPool));
+        exec.execute(new Reporter(finishingQueue));
+        // Start everything running by producing chassis:
+        exec.execute(new ChassisBuilder(chassisQueue));
+        TimeUnit.SECONDS.sleep(7);
+        exec.shutdownNow();
+    }
+} /* (Execute to see output) *///:~
+
 class Car {
     private final int id;
     private boolean engine = false, driveTrain = false, wheels = false;
@@ -152,6 +170,7 @@ abstract class Robot implements Runnable {
     public synchronized void engage() {
         engage = true;
         notifyAll();
+        System.out.println("打开电源" + this);
     }
 
     // The part of run() that's different for each robot:
@@ -161,6 +180,7 @@ abstract class Robot implements Runnable {
         try {
             powerDown(); // Wait until needed
             while (!Thread.interrupted()) {
+                System.out.println("开始服务" + this);
                 performService();
                 assembler.barrier().await(); // Synchronize
                 // We're done with that job...
@@ -175,8 +195,8 @@ abstract class Robot implements Runnable {
         print(this + " off");
     }
 
-    private synchronized void
-    powerDown() throws InterruptedException {
+    private synchronized void powerDown() throws InterruptedException {
+        System.out.println("关闭电源" + this);
         engage = false;
         assembler = null; // Disconnect from the Assembler
         // Put ourselves back in the available pool:
@@ -229,15 +249,16 @@ class RobotPool {
 
     public synchronized void add(Robot r) {
         pool.add(r);
+        System.out.println("add: " + pool);
         notifyAll();
     }
 
-    public synchronized void
-    hire(Class<? extends Robot> robotType, Assembler d)
-            throws InterruptedException {
+    public synchronized void hire(Class<? extends Robot> robotType, Assembler d) throws InterruptedException {
+        System.out.println("hire: " + robotType + ";" + d);
         for (Robot r : pool)
             if (r.getClass().equals(robotType)) {
                 pool.remove(r);
+                System.out.println("remove: " + pool);
                 r.assignAssembler(d);
                 r.engage(); // Power it up to do the task
                 return;
@@ -251,21 +272,3 @@ class RobotPool {
     }
 }
 
-public class CarBuilder {
-    public static void main(String[] args) throws Exception {
-        CarQueue chassisQueue = new CarQueue(),
-                finishingQueue = new CarQueue();
-        ExecutorService exec = Executors.newCachedThreadPool();
-        RobotPool robotPool = new RobotPool();
-        exec.execute(new EngineRobot(robotPool));
-        exec.execute(new DriveTrainRobot(robotPool));
-        exec.execute(new WheelRobot(robotPool));
-        exec.execute(new Assembler(
-                chassisQueue, finishingQueue, robotPool));
-        exec.execute(new Reporter(finishingQueue));
-        // Start everything running by producing chassis:
-        exec.execute(new ChassisBuilder(chassisQueue));
-        TimeUnit.SECONDS.sleep(7);
-        exec.shutdownNow();
-    }
-} /* (Execute to see output) *///:~

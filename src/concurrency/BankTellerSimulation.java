@@ -18,7 +18,7 @@ public class BankTellerSimulation {
         CustomerLine customers = new CustomerLine(MAX_LINE_SIZE);
         executorService.execute(new CustomerGenerator(customers));
         executorService.execute(new TellerManager(executorService, customers, ADJUSTMENT_PERIOD));
-        TimeUnit.SECONDS.sleep(3);
+        TimeUnit.SECONDS.sleep(36);
         executorService.shutdownNow();
     }
 }
@@ -153,11 +153,13 @@ class TellerManager implements Runnable {
     }
 
     public void adjustTellerNumber() {
+        System.out.println("customers.size=" + customers.size());
+        System.out.println("workingTellers.size=" + workingTellers.size());
         if (customers.size() / workingTellers.size() > 2) {
             if (tellersDoingOtherThings.size() > 0) {
                 Teller teller = tellersDoingOtherThings.remove();
                 teller.serveCustomerLine();
-                ;
+                System.out.println("tellersDoingOtherThings.size=" + tellersDoingOtherThings.size() + "; " + teller.shortString());
                 workingTellers.offer(teller);
                 return;
             }
@@ -188,9 +190,9 @@ class TellerManager implements Runnable {
             while (!Thread.interrupted()) {
                 TimeUnit.MILLISECONDS.sleep(adjustmentPeriod);
                 adjustTellerNumber();
-                System.out.println(customers + "{ ");
+                System.out.print(customers + "{ ");
                 for (Teller teller : workingTellers) {
-                    System.out.println(teller.shortString() + " ");
+                    System.out.print(teller.shortString() + " ");
                 }
                 System.out.println("}");
             }

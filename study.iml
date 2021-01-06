@@ -7,5 +7,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="apt-mirror-api-0.1" level="project" />
+    <orderEntry type="library" name="TinkingInJava" level="project" />
+    <orderEntry type="library" name="typeinfo-pets" level="project" />
+    <orderEntry type="library" name="javassist-3.9.0.GA" level="project" />
   </component>
 </module>

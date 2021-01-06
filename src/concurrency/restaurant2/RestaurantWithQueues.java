@@ -1,4 +1,4 @@
-package restaurant2;
+package concurrency.restaurant2;
 
 import enumerated.Course;
 import enumerated.Food;
@@ -9,6 +9,16 @@ import java.util.Random;
 import java.util.concurrent.*;
 
 import static net.mindview.util.Print.print;
+
+public class RestaurantWithQueues {
+    public static void main(String[] args) throws Exception {
+        ExecutorService exec = Executors.newCachedThreadPool();
+        Restaurant restaurant = new Restaurant(exec, 5, 2);
+        exec.execute(restaurant);
+        TimeUnit.SECONDS.sleep(2);
+        exec.shutdownNow();
+    }
+}
 
 class Order { // (A data-transfer object)
     private static int counter = 0;
@@ -70,15 +80,13 @@ class Customer implements Runnable {
     private final int id = counter++;
     private final WaitPerson waitPerson;
     // Only one course at a time can be received:
-    private SynchronousQueue<Plate> placeSetting =
-            new SynchronousQueue<Plate>();
+    private SynchronousQueue<Plate> placeSetting = new SynchronousQueue<Plate>();
 
     public Customer(WaitPerson w) {
         waitPerson = w;
     }
 
-    public void
-    deliver(Plate p) throws InterruptedException {
+    public void deliver(Plate p) throws InterruptedException {
         // Only blocks if customer is still
         // eating the previous course:
         placeSetting.put(p);
@@ -88,12 +96,13 @@ class Customer implements Runnable {
         for (Course course : Course.values()) {
             Food food = course.randomSelection();
             try {
+                //让服务员下单
                 waitPerson.placeOrder(this, food);
+
                 // Blocks until course has been delivered:
                 print(this + "eating " + placeSetting.take());
             } catch (InterruptedException e) {
-                print(this + "waiting for " +
-                        course + " interrupted");
+                print(this + "waiting for " + course + " interrupted");
                 break;
             }
         }
@@ -109,8 +118,7 @@ class WaitPerson implements Runnable {
     private static int counter = 0;
     private final int id = counter++;
     private final Restaurant restaurant;
-    BlockingQueue<Plate> filledOrders =
-            new LinkedBlockingQueue<Plate>();
+    BlockingQueue<Plate> filledOrders = new LinkedBlockingQueue<Plate>();
 
     public WaitPerson(Restaurant rest) {
         restaurant = rest;
@@ -120,20 +128,21 @@ class WaitPerson implements Runnable {
         try {
             // Shouldn't actually block because this is
             // a LinkedBlockingQueue with no size limit:
-            restaurant.orders.put(new Order(cust, this, food));
+            Order order = new Order(cust, this, food);
+            restaurant.orders.put(order);
+            System.out.println("订购：" + order);
         } catch (InterruptedException e) {
             print(this + " placeOrder interrupted");
         }
     }
 
+    @Override
     public void run() {
         try {
             while (!Thread.interrupted()) {
                 // Blocks until a course is ready
                 Plate plate = filledOrders.take();
-                print(this + "received " + plate +
-                        " delivering to " +
-                        plate.getOrder().getCustomer());
+                print(this + "received " + plate + " delivering to " + plate.getOrder().getCustomer());
                 plate.getOrder().getCustomer().deliver(plate);
             }
         } catch (InterruptedException e) {
@@ -162,11 +171,13 @@ class Chef implements Runnable {
             while (!Thread.interrupted()) {
                 // Blocks until an order appears:
                 Order order = restaurant.orders.take();
+                System.out.println("厨师收到订单：" + order);
                 Food requestedItem = order.item();
                 // Time to prepare order:
                 TimeUnit.MILLISECONDS.sleep(rand.nextInt(500));
                 Plate plate = new Plate(order, requestedItem);
                 order.getWaitPerson().filledOrders.put(plate);
+                System.out.println("厨师装盘后，通知该订单的服务员");
             }
         } catch (InterruptedException e) {
             print(this + " interrupted");
@@ -180,22 +191,20 @@ class Chef implements Runnable {
 }
 
 class Restaurant implements Runnable {
-    private List<WaitPerson> waitPersons =
-            new ArrayList<WaitPerson>();
+    private List<WaitPerson> waitPersons = new ArrayList<WaitPerson>();
     private List<Chef> chefs = new ArrayList<Chef>();
     private ExecutorService exec;
     private static Random rand = new Random(47);
-    BlockingQueue<Order>
-            orders = new LinkedBlockingQueue<Order>();
+    BlockingQueue<Order> orders = new LinkedBlockingQueue<Order>();
 
-    public Restaurant(ExecutorService e, int nWaitPersons,
-                      int nChefs) {
+    public Restaurant(ExecutorService e, int nWaitPersons, int nChefs) {
         exec = e;
         for (int i = 0; i < nWaitPersons; i++) {
             WaitPerson waitPerson = new WaitPerson(this);
             waitPersons.add(waitPerson);
             exec.execute(waitPerson);
         }
+
         for (int i = 0; i < nChefs; i++) {
             Chef chef = new Chef(this);
             chefs.add(chef);
@@ -203,13 +212,14 @@ class Restaurant implements Runnable {
         }
     }
 
+    @Override
     public void run() {
         try {
             while (!Thread.interrupted()) {
                 // A new customer arrives; assign a WaitPerson:
-                WaitPerson wp = waitPersons.get(
-                        rand.nextInt(waitPersons.size()));
+                WaitPerson wp = waitPersons.get(rand.nextInt(waitPersons.size()));
                 Customer c = new Customer(wp);
+                System.out.println("客户来了，随机分配一个服务员为其服务：" + " " + wp + "; " + c);
                 exec.execute(c);
                 TimeUnit.MILLISECONDS.sleep(100);
             }
@@ -217,20 +227,5 @@ class Restaurant implements Runnable {
             print("concurrency.Restaurant interrupted");
         }
         print("concurrency.Restaurant closing");
-    }
-}
-
-public class RestaurantWithQueues {
-    public static void main(String[] args) throws Exception {
-        ExecutorService exec = Executors.newCachedThreadPool();
-        Restaurant restaurant = new Restaurant(exec, 5, 2);
-        exec.execute(restaurant);
-        if (args.length > 0) // Optional argument
-            TimeUnit.SECONDS.sleep(new Integer(args[0]));
-        else {
-            print("Press 'Enter' to quit");
-            System.in.read();
-        }
-        exec.shutdownNow();
     }
 }

@@ -84,7 +84,7 @@ class Chef implements Runnable {
                     System.out.println("Out of food, closing");
                     restaurant.executorService.shutdownNow();
                 }
-                System.out.println("restaurant2.Order up");
+                System.out.println("concurrency.restaurant2.Order up");
                 synchronized (restaurant.waitPerson) {
                     restaurant.meal = new Meal(count);
                     restaurant.waitPerson.notifyAll();

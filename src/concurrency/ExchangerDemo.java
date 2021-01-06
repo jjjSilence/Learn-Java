@@ -4,21 +4,20 @@ import java.util.List;
 import java.util.concurrent.*;
 
 public class ExchangerDemo {
-    static int size = 10;
-    static int delay = 5;
+    static int size = 2;
+    static int delay = 1;
 
     public static void main(String[] args) throws InterruptedException {
         ExecutorService executorService = Executors.newCachedThreadPool();
         Exchanger<List<Fat>> xc = new Exchanger<>();
         List<Fat> producerList = new CopyOnWriteArrayList<>();
         List<Fat> consumerList = new CopyOnWriteArrayList<>();
-        executorService.execute(new ExchangerProducer<Fat>(xc, BasicGenerator.create(Fat.class), producerList));
+        executorService.execute(new ExchangerProducer<>(xc, BasicGenerator.create(Fat.class), producerList));
         executorService.execute(new ExchangerConsumer<>(xc, consumerList));
         TimeUnit.SECONDS.sleep(delay);
         executorService.shutdownNow();
     }
 }
-
 
 class ExchangerProducer<T> implements Runnable {
     private Generator<T> generator;
@@ -35,9 +34,13 @@ class ExchangerProducer<T> implements Runnable {
     public void run() {
         try {
             while (!Thread.interrupted()) {
+                System.out.println("----P000" + holder);
                 for (int i = 0; i < ExchangerDemo.size; i++) {
-                    holder = exchanger.exchange(holder);
+                    holder.add(generator.next());
                 }
+                System.out.println("----P111" + holder);
+                holder = exchanger.exchange(holder);
+                System.out.println("----P222" + holder);
             }
         } catch (InterruptedException e) {
 
@@ -59,11 +62,14 @@ class ExchangerConsumer<T> implements Runnable {
     public void run() {
         try {
             while (!Thread.interrupted()) {
+                System.out.println("----C000" + holder);
                 holder = exchanger.exchange(holder);
+                System.out.println("----C111" + holder);
                 for (T x : holder) {
                     value = x;
                     holder.remove(x);
                 }
+                System.out.println("----C222" + holder);
             }
         } catch (InterruptedException e) {
 
