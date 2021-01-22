@@ -19,6 +19,7 @@ public class InterfaceProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+        System.out.println("ooooooooooooooooo");
         Messager messager = processingEnv.getMessager();
         messager.printMessage(Diagnostic.Kind.NOTE, "进入到InterfaceProcessor中了~~~");
         // 将带有InterfaceProcessor的类给找出来

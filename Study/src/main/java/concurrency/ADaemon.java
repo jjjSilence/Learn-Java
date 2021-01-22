@@ -1,6 +1,5 @@
 package concurrency;
 
-import com.sun.istack.internal.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +36,7 @@ public class ADaemon {
      * @param value  待设置的值
      * @param n      总人数
      */
-    private static void search(List<int[]> result, @NotNull int[] array, @NotNull boolean[] used, int value, int n) {
+    private static void search(List<int[]> result,  int[] array,  boolean[] used, int value, int n) {
         if (value == n) {
             int[] a = new int[n];
             for (int i = 0; i < n; i++) {

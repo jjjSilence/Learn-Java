@@ -1,2 +1,4 @@
-com/example/processor/InterfaceAnnotation.class
 com/example/processor/InterfaceProcessor.class
+com/example/study/InterfaceExtractorProcessor.class
+com/example/processor/InterfaceAnnotation.class
+com/example/study/ExtractInterface.class

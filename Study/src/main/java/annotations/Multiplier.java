@@ -2,7 +2,10 @@
 // APT-based annotation processing.
 package annotations;
 
-//@ExtractInterface("test1")
+
+import com.example.study.ExtractInterface;
+
+@ExtractInterface("IMultiplier")
 public class Multiplier {
     public int multiply(int x, int y) {
         int total = 0;
@@ -16,16 +19,9 @@ public class Multiplier {
     }
 
     public static void main(String[] args) {
-//        Multiplier m = new Multiplier();
-//        System.out.println("11*16 = " + m.multiply(11, 16));
-        test();
+        Multiplier m = new Multiplier();
+        System.out.println("11*16 = " + m.multiply(11, 16));
     }
-
-    @ExtractInterface("test1")
-    public static void test() {
-
-    }
-
 } /* Output:
 11*16 = 176
 *///:~
