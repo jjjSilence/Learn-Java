@@ -11,6 +11,6 @@
     <modules>
         <module>Provider</module>
         <module>Consumer</module>
-        <module>Study</module>
+        <module>demo</module>
     </modules>
 </project>
