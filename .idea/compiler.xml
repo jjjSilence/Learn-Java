@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Annotation profile for Consumer" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processor name="com.example.processor.InterfaceProcessor" />
+        <module name="Consumer" />
+      </profile>
+      <profile name="Annotation profile for demo" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processor name="com.example.study.InterfaceExtractorProcessor" />
+        <module name="demo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Consumer" target="1.8" />
+      <module name="demo" target="1.8" />
+      <module name="Provider" target="1.8" />
+      <module name="Study" target="1.8" />
+      <module name="study" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Provider" options="-proc:none" />
+    </option>
+  </component>
+</project>

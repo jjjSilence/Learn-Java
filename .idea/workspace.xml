@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6bfd85de-491a-49d9-8ce9-5901844a7b7f" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="downloadSourcesAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="delegateBuildToMaven" value="true" />
+  </component>
+  <component name="ProjectId" id="1nPJTYJLQDkNm3D91EdoB6UHj8x" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/demo/src/main/java/com/example" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Provider/src/main/resources/META-INF/services/META-INF/services" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example" />
+      <recent name="com.example.study" />
+      <recent name="com.example.test" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/demo/src/main/java/com/example" />
+      <recent name="$PROJECT_DIR$/Consumer/src/main" />
+      <recent name="$PROJECT_DIR$/Consumer" />
+      <recent name="$PROJECT_DIR$/Study/src/main/java/net" />
+      <recent name="$PROJECT_DIR$/Study/src/main/java" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="AtUnitExample1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.annotations.AtUnitExample1" />
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.annotations.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AtUnitExample1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6bfd85de-491a-49d9-8ce9-5901844a7b7f" name="Default Changelist" comment="" />
+      <created>1611285803437</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1611285803437</updated>
+      <workItem from="1611285804508" duration="1584000" />
+    </task>
+    <task id="LOCAL-00001" summary="注解处理器">
+      <created>1611305398881</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1611305398882</updated>
+    </task>
+    <task id="LOCAL-00002" summary="注解处理器">
+      <created>1611305806945</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1611305806946</updated>
+    </task>
+    <task id="LOCAL-00003" summary="注解处理器">
+      <created>1611307954966</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1611307954966</updated>
+    </task>
+    <task id="LOCAL-00004" summary="注解处理器">
+      <created>1611556585725</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1611556585725</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="注解处理器" />
+    <option name="LAST_COMMIT_MESSAGE" value="注解处理器" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="208" y="31" key="#Project_Structure" timestamp="1611304621880">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="208" y="31" key="#Project_Structure/0.0.1440.900@0.0.1440.900" timestamp="1611304621880" />
+    <state x="184" y="112" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1611556442229">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="112" width="1071" height="700" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1611556442229" />
+    <state x="408" y="259" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1611306989422">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="408" y="259" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900@0.0.1440.900" timestamp="1611306989422" />
+    <state x="533" y="163" key="#com.intellij.ide.util.MemberChooser" timestamp="1611306365135">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="533" y="163" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1611306365135" />
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1611306563828">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1611306563828" />
+    <state x="252" y="23" key="CommitChangelistDialog2" timestamp="1611556585320">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="252" y="23" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1611556585320" />
+    <state x="144" y="76" key="DiffContextDialog" timestamp="1611307950395">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="144" y="76" key="DiffContextDialog/0.0.1440.900@0.0.1440.900" timestamp="1611307950395" />
+    <state width="1398" height="326" key="GridCell.Tab.0.bottom" timestamp="1611556699820">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="326" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1611556699820" />
+    <state width="1398" height="326" key="GridCell.Tab.0.center" timestamp="1611556699818">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="326" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1611556699818" />
+    <state width="1398" height="326" key="GridCell.Tab.0.left" timestamp="1611556699817">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="326" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1611556699817" />
+    <state width="1398" height="326" key="GridCell.Tab.0.right" timestamp="1611556699819">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="1398" height="326" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1611556699819" />
+    <state x="258" y="112" key="Maven.ArtifactSearchDialog" timestamp="1611306463755">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="258" y="112" key="Maven.ArtifactSearchDialog/0.0.1440.900@0.0.1440.900" timestamp="1611306463755" />
+    <state x="221" y="89" key="SettingsEditor" timestamp="1611556672364">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="221" y="89" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1611556672364" />
+    <state x="88" y="103" key="new project wizard" timestamp="1611555391168">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="88" y="103" key="new project wizard/0.0.1440.900@0.0.1440.900" timestamp="1611555391168" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/study$Joining.ic" NAME="Joining Coverage Results" MODIFIED="1607311914562" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/study$AtomicityTest.ic" NAME="AtomicityTest Coverage Results" MODIFIED="1607568697852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/study$PipedIO.ic" NAME="PipedIO Coverage Results" MODIFIED="1609211612852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/study$Test.ic" NAME="Test Coverage Results" MODIFIED="1611555115255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/study$AttemptLocking.ic" NAME="AttemptLocking Coverage Results" MODIFIED="1607482134085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/study$TestProcessor.ic" NAME="TestProcessor Coverage Results" MODIFIED="1611307227714" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.test.*</FILTER>
+    </SUITE>
+  </component>
+</project>
